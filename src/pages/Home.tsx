@@ -52,7 +52,7 @@ const Home: React.FC = () => {
       >
         <a href="/" aria-label="Emelephant Homepage">
           <img 
-            src="/src/assets/logo.svg" 
+            src="/assets/logo.svg" 
             alt="Emelephant Logo"
             className="w-32 h-auto hover:opacity-80 transition-opacity duration-300"
           />
