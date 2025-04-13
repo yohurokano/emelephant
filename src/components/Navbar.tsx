@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
           className="hover:opacity-80 transition-opacity"
         >
           <img 
-            src="/assets/logo.png" 
+            src="/logo.svg" 
             alt="Emelephant Logo"
             className="h-12 w-auto"
           />
