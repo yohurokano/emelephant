@@ -149,7 +149,7 @@ const Projects: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-sm font-medium">
                   <span className="py-1 px-3 rounded-full bg-primary text-primary-content">Ages 6-12</span>
-                  <span className="py-1 px-3 rounded-full bg-secondary text-secondary-content">Parent Dashboard</span>
+                  <span className="py-1 px-3 rounded-full bg-secondary text-secondary-content">Teacher Dashboard</span>
                 </div>
                 <div className="flex items-center gap-2 text-base-content/70">
                   <FaUsers className="text-lg" />
