@@ -1,22 +1,30 @@
+/* Your Global CSS File (e.g., src/index.css) */
+
+/* Import Tailwind base, components, and utilities */
 @import "tailwindcss";
 
+/* Apply daisyUI plugin and configure themes */
 @plugin "daisyui" {
+  /* Define your themes here */
+  /* Assuming 'emelephant-dark' is defined elsewhere or you'll add it */
   themes: emelephant --default, emelephant-dark --prefersdark;
 }
 
-
-
+/* Define your custom 'emelephant' light theme */
 @plugin "daisyui/theme" {
   name: "emelephant";
   default: true;
   prefersdark: false;
   color-scheme: "light";
+  /* Your theme color definitions */
   --color-base-100: oklch(97% 0 0);
   --color-base-200: oklch(92% 0 0);
   --color-base-300: oklch(87% 0 0);
   --color-base-content: oklch(21% 0.006 285.885);
   --color-primary: oklch(50% 0.118 165.612);
   --color-primary-content: oklch(96% 0.001 286.375);
+  /* Add --color-primary-focus if you want a distinct hover color for scrollbar */
+  /* --color-primary-focus: oklch(45% 0.118 165.612); */ /* Example darker primary */
   --color-secondary: oklch(26% 0.051 172.552);
   --color-secondary-content: oklch(100% 0 0);
   --color-accent: oklch(79% 0.184 86.047);
@@ -31,6 +39,7 @@
   --color-warning-content: oklch(0% 0 0);
   --color-error: oklch(63% 0.237 25.331);
   --color-error-content: oklch(0% 0 0);
+  /* Your theme layout/size definitions */
   --radius-selector: 1rem;
   --radius-field: 0.5rem;
   --radius-box: 1rem;
@@ -41,10 +50,7 @@
   --noise: 0;
 }
 
-
-
-
-
+/* Your custom keyframes */
 @keyframes pulse-slow {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
@@ -52,3 +58,73 @@
 .animate-pulse-slow {
   animation: pulse-slow 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+
+/* === Custom Scrollbar Styles (Added) === */
+
+/* Basic scrollbar styling for Firefox */
+* {
+  scrollbar-width: thin; /* Or "auto". "thin" makes it less obtrusive */
+  /* Sets thumb color to primary (var --p) and track to base-300 (var --b3) */
+  /* daisyUI maps --color-primary to --p, --color-base-300 to --b3 etc. */
+  scrollbar-color: hsl(var(--p)) hsl(var(--b3));
+}
+
+/* More detailed styling for WebKit browsers (Chrome, Safari, Edge) */
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust width as desired */
+  height: 10px; /* Adjust height for horizontal scrollbars */
+}
+
+/* The scrollbar track (the background) */
+::-webkit-scrollbar-track {
+  background: hsl(var(--b3)); /* Use base-300 */
+  border-radius: 5px; /* Match thumb radius */
+}
+
+/* The draggable scrolling handle */
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--p)); /* Use primary color */
+  border-radius: 5px;
+  /* Add a border matching the track color for a 'padding' effect */
+  border: 2px solid hsl(var(--b3));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* Use primary-focus (--pf) if defined in your theme, otherwise fallback to primary (--p) */
+  /* You can define --color-primary-focus in your theme above if needed */
+  background-color: hsl(var(--pf, var(--p)));
+}
+
+/* Optional: Style the corner where vertical and horizontal scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: hsl(var(--b2)); /* Use base-200 */
+}
+
+
+/* === Custom Cursor (Optional - Requires Image Files) === */
+
+/*
+  Styling the cursor to dynamically change color with the theme is not
+  possible with CSS alone. You need to use image files (.png, .svg, .cur).
+  Below are examples of how to apply them globally or to specific elements.
+  You would need to create the actual 'custom-default.png' and
+  'custom-pointer.png' files yourself and place them in your public folder.
+*/
+
+/* Example: Apply a custom default cursor to the whole page */
+/* html {
+  cursor: url('/cursors/custom-default.png'), default;
+} */
+
+/* Example: Apply a custom pointer cursor to interactive elements */
+/* button,
+a,
+[role="button"],
+input[type="submit"] {
+  cursor: url('/cursors/custom-pointer.png'), pointer;
+} */
+
